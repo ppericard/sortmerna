@@ -847,7 +847,8 @@ paralleltraversal (char* inputreads,
         for ( int32_t strand = 0; strand < max; strand++ )
         {
           // loop through all of the reads in the file 
-#pragma omp parallel for num_threads(numcpu_gv) shared(lookup_tbl,positions_tbl,buffer,reference_seq,reference_seq_len,read_hits_align_info,read_hits,read_max_SW_score) schedule(dynamic,256)
+//~ #pragma omp parallel for num_threads(numcpu_gv) shared(lookup_tbl,positions_tbl,buffer,reference_seq,reference_seq_len,read_hits_align_info,read_hits,read_max_SW_score) schedule(dynamic,256)
+#pragma omp parallel for num_threads(numcpu_gv) shared(lookup_tbl,positions_tbl,buffer,reference_seq,reference_seq_len,read_hits_align_info,read_hits,read_max_SW_score) schedule(guided)
           for ( int64_t readn = 1; readn < strs; readn+=2 )
           {
 #ifdef debug_align
